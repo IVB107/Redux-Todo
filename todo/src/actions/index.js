@@ -1,6 +1,7 @@
 export const ADD_TODO = 'ADD_TODO';
 export const MARK_COMPLETED = 'MARK_COMPLETED'
 export const DELETE_TODO = 'DELETE_TODO';
+export const CLEAR_LIST = 'CLEAR_LIST';
 
 export const addTodo = inputText => {
     return {
@@ -24,5 +25,12 @@ export const deleteTodo = id => {
     return {
         type: DELETE_TODO,
         payload: id
+    }
+}
+
+export const clearList = () => {
+    return {
+        type: CLEAR_LIST,
+        payload: []
     }
 }

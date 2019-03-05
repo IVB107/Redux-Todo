@@ -1,4 +1,4 @@
-import { ADD_TODO, MARK_COMPLETED, DELETE_TODO } from '../actions';
+import { ADD_TODO, MARK_COMPLETED, DELETE_TODO, CLEAR_LIST } from '../actions';
 
 const initialState = {
     inputText: '',
@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
             const newList = state.todoList.map(todo => {
                 return todo.id === action.payload
                     ? todo = {...todo, completed: !todo.completed}
-                    : null
+                    : todo
             })
             return {
                 ...state,
@@ -27,6 +27,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 todoList: state.todoList.filter(todo => todo.id !== action.payload)
+            }
+        case CLEAR_LIST:
+            return {
+                ...state,
+                todoList: action.payload
             }
         default:
             return state;

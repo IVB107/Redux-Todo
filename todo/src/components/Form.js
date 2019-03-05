@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions';
+import { addTodo, clearList } from '../actions';
 
 class Form extends Component {
     constructor(props){
@@ -23,7 +23,7 @@ class Form extends Component {
 
     clearList = e => {
         e.preventDefault();
-        console.log('Clear List button clicked!');
+        this.props.clearList();
     }
 
     render(){
@@ -48,4 +48,4 @@ const mapStateToProps = state => {
     return {}
 }
 
-export default connect(mapStateToProps, { addTodo: addTodo })(Form);
+export default connect(mapStateToProps, { addTodo: addTodo, clearList: clearList })(Form);

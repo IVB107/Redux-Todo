@@ -12,7 +12,6 @@ const List = props => {
                         todo={todo}
                         key={todo.id}
                         name={todo.name} 
-                        completed={todo.completed}
                     />
                 );
             })}

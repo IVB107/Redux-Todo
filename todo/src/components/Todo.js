@@ -5,16 +5,14 @@ import './Todo.css';
 
 const Todo = props => {
     return (
-        <div onClick={() => props.markCompleted(props.todo.id)} className={`todo-item ${props.todo.completed ? 'completed' : null}`}>
-            <div>{props.name}</div>
-            <div>
-                <button 
-                    className={`${props.todo.completed ? null : 'hidden'}`}
-                    onClick={() => props.deleteTodo(props.todo.id)}
-                >
-                Delete
-                </button>   
-            </div>
+        <div onClick={() => props.markCompleted(props.todo.id)} className={'todo-item'}>
+            <p className={`${props.todo.completed ? 'completed' : null}`}>{props.name}</p>
+            <button 
+                className={`${props.todo.completed ? null : 'hidden'}`}
+                onClick={() => props.deleteTodo(props.todo.id)}
+            >
+            X
+            </button>   
         </div>
     );
 }
