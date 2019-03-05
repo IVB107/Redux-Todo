@@ -1,5 +1,6 @@
 import React from 'react';
 import Todo from './Todo';
+import { connect } from 'react-redux';
 
 const List = props => {
     return (
@@ -7,11 +8,11 @@ const List = props => {
             {props.todoList.map(todo => {
                 return (
                     <Todo 
+                        todo={todo}
                         key={todo.id}
                         name={todo.name} 
-                        todo={todo}
-                        delete={props.delete}
-                        toggle={props.toggle}
+                        completed={todo.completed}
+                        deleteTodo={props.deleteTodo}
                     />
                 );
             })}
@@ -19,4 +20,10 @@ const List = props => {
     )
 }
 
-export default List;
+const mapStateToProps = (state) => {
+    return {
+        todoList: state.todoList
+    }
+}
+
+export default connect(mapStateToProps)(List);

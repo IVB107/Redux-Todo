@@ -1,21 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addTodo } from '../actions';
 
-const Form = (props) => {
+class Form extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            inputValue: ''
+        }
+    }
 
-    return (
-        <div className="form-container">
-            <form action="">
-                <input 
-                type="text" 
-                value={props.name}
-                onChange={props.updateText}
-                placeholder="What do now?"
-                />
-                <button className="button" onClick={props.submit}>Add Item</button>
-                <button className="button" onClick={props.clear}>Clear List</button>
-            </form>
-        </div>
-    );
+    updateText = e => {
+        this.setState({ inputValue: e.target.value });
+    }
+
+    createNewTodo = e => {
+        e.preventDefault();
+        console.log('Clicked to add a new todo');
+        this.props.addTodo(this.state.inputValue);
+        this.setState({ inputValue: '' })
+    }
+
+    clearList = e => {
+        e.preventDefault();
+        console.log('Clear List button clicked!');
+    }
+
+    render(){
+        return (
+            <div className="form-container">
+                <form action="">
+                    <input 
+                        type="text" 
+                        value={this.state.inputValue}
+                        onChange={this.updateText}
+                        placeholder="What do now?"
+                    />
+                    <button onClick={this.createNewTodo}>Add Item</button>
+                    <button onClick={this.clearList}>Clear List</button>
+                </form>
+            </div>
+        );
+    }
 }
 
-export default Form;
+const mapStateToProps = state => {
+    return {}
+}
+
+export default connect(mapStateToProps, { addTodo: addTodo })(Form);

@@ -6,10 +6,17 @@ import { addTodo, markCompleted, deleteTodo } from './actions';
 import './App.css';
 
 class App extends Component {
+
+  deleteTodo = (e, id) => {
+    e.preventDefault();
+    console.log('Delete todo clicked');
+    this.props.deleteTodo(id)
+  }
+
   render() {
     return (
       <div>
-        <List todoList={this.props.todoList} />
+        <List deleteTodo={this.deleteTodo}/>
         <Form />
       </div>
     );

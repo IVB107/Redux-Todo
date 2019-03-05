@@ -11,7 +11,7 @@ const Todo = props => {
                 />
                 <button 
                     className={`${props.todo.completed ? null : 'hidden'}`}
-                    onClick={() => props.delete(props.todo.id)}>Delete</button>   
+                    onClick={(e) => props.deleteTodo(e, props.todo.id)}>Delete</button>   
             </div>
         </div>
     );

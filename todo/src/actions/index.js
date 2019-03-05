@@ -20,9 +20,9 @@ export const markCompleted = () => {
     }
 }
 
-export const deleteTodo = () => {
+export const deleteTodo = id => {
     return {
         type: DELETE_TODO,
-        payload: ''
+        payload: id
     }
 }
