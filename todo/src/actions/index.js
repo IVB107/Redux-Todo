@@ -13,10 +13,10 @@ export const addTodo = inputText => {
     }
 }
 
-export const markCompleted = () => {
+export const markCompleted = id => {
     return {
         type: MARK_COMPLETED,
-        payload: ''
+        payload: id
     }
 }
 

@@ -1,20 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteTodo, markCompleted } from '../actions';
+import './Todo.css';
 
 const Todo = props => {
     return (
-        <div className={`todo-item ${props.todo.completed ? 'completed' : null}`}>
+        <div onClick={() => props.markCompleted(props.todo.id)} className={`todo-item ${props.todo.completed ? 'completed' : null}`}>
             <div>{props.name}</div>
             <div>
-                <input 
-                    type="checkbox" 
-                    onClick={() => props.toggle(props.todo.id)}
-                />
                 <button 
                     className={`${props.todo.completed ? null : 'hidden'}`}
-                    onClick={(e) => props.deleteTodo(e, props.todo.id)}>Delete</button>   
+                    onClick={() => props.deleteTodo(props.todo.id)}
+                >
+                Delete
+                </button>   
             </div>
         </div>
     );
 }
 
-export default Todo;
+const mapStateToProps = state => {
+    return {}
+}
+
+export default connect(
+    mapStateToProps, 
+    { 
+        deleteTodo: deleteTodo, 
+        markCompleted: markCompleted 
+    }
+)(Todo);

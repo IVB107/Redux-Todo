@@ -2,6 +2,7 @@ import React from 'react';
 import Todo from './Todo';
 import { connect } from 'react-redux';
 
+
 const List = props => {
     return (
         <div>
@@ -12,7 +13,6 @@ const List = props => {
                         key={todo.id}
                         name={todo.name} 
                         completed={todo.completed}
-                        deleteTodo={props.deleteTodo}
                     />
                 );
             })}
