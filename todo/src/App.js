@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
+import List from './components/List';
+import Form from './components/Form';
+import { connect } from 'react-redux';
+import { addTodo, markCompleted, deleteTodo } from './actions';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div>
-        S E N D   N U D E S
+        <List todoList={this.props.todoList} />
+        <Form />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    inputText: state.inputText,
+    todoList: state.todoList
+  };
+};
+
+export default connect(mapStateToProps, { addTodo, markCompleted, deleteTodo })(App);
